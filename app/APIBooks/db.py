@@ -1,5 +1,5 @@
 from sqlalchemy import create_engine
-from app.models  import Base
+from models  import Base
 
 
 db_path = "sqlite:///./shortened_urls.db"

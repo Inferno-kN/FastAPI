@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from app.api import router
-from app.db import engine, create_db_and_tables
+from api import router
+from db import engine, create_db_and_tables
 
 app = FastAPI()
 

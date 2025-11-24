@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Request, Depends
 from sqlalchemy.orm import Session
-from app.models import Url
-from app.utils import log_click
-from app.db import create_db_and_tables
+from models import Url
+from utils import log_click
+from db import create_db_and_tables
 from fastapi.responses import RedirectResponse
 from fastapi import HTTPException
 

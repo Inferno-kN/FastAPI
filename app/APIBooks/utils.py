@@ -1,7 +1,7 @@
-from app.models import ClickLog
+from models import ClickLog
 from datetime import datetime
 from sqlalchemy.orm import sessionmaker
-from app.db import engine
+from db import engine
 
 
 Session = sessionmaker(engine)
