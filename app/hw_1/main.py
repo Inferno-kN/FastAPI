@@ -13,7 +13,7 @@
 from typing import Dict
 from fastapi import HTTPException
 from fastapi import FastAPI
-from starlette.status import HTTP_422_UNPROCESSABLE_CONTENT, HTTP_404_NOT_FOUND, HTTP_204_NO_CONTENT, HTTP_409_CONFLICT, HTTP_201_CREATED
+from starlette.status import HTTP_404_NOT_FOUND, HTTP_204_NO_CONTENT, HTTP_409_CONFLICT, HTTP_201_CREATED
 
 app = FastAPI()
 
@@ -45,7 +45,7 @@ async def get_user_by_username(username: str):
         if user.get('username') == username:
             return user
 
-    raise HTTPException(status_code=404, detail="Пользователь не найден")
+    raise HTTPException(status_code=HTTP_404_NOT_FOUND, detail="Пользователь не найден")
 
 
 @app.get("/user/{user_id}", summary="Получение юзера по уникальному идентификатору")
@@ -102,3 +102,8 @@ async def delete_user(user_id: int):
             return deleted_user
 
     raise HTTPException(status_code=HTTP_404_NOT_FOUND)
+
+
+
+
+
