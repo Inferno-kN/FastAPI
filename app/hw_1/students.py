@@ -58,12 +58,12 @@ async def get_avg_grade_student(student_id: int):
 
 
 @app.get("/students", summary="Фильтрация по группе")
-async def filter_group(group: str):
+async def filter_group(group: str | None = None):
     result = []
     for student in STUDENTS:
         if student.get('group') == group:
             result.append(student)
-    if result == []:
+    if not result:
         raise HTTPException(status_code=HTTP_404_NOT_FOUND, detail='Студенты не найдены')
     return result
 

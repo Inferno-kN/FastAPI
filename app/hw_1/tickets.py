@@ -28,7 +28,9 @@ from fastapi import HTTPException
 from fastapi import FastAPI
 from starlette.status import HTTP_404_NOT_FOUND, HTTP_204_NO_CONTENT, HTTP_201_CREATED
 
+
 app = FastAPI()
+
 
 class TicketCreate(BaseModel):
     title: str
@@ -65,14 +67,14 @@ Next_id = 2
 
 
 @app.get("/tickets", summary='Получение всех билетов')
-async def get_tickets():
+async def get_tickets(status: Literal['open', 'in_progress', 'closed'] | None = None):
     return {"tickets": TICKETS}
 
 
-@app.get("/tickets/status/{status}", summary="Фильтрация по статусу")
-async def get_ticket_status(status: Literal['open', 'in_progress', 'closed']):
-    if status:
-        return [ticket for ticket in TICKETS if ticket.get('status') == status]
+# @app.get("/tickets/status/{status}", summary="Фильтрация по статусу")
+# async def get_ticket_status(status: Literal['open', 'in_progress', 'closed']):
+#     if status:
+#         return [ticket for ticket in TICKETS if ticket.get('status') == status]
 
 
 @app.get("/tickets/priority/{priority}", summary='Фильтрация по приоритету')
